@@ -9,11 +9,11 @@ public class Spawning : MonoBehaviour
     static public GameObject garbage;
     static public float radius = 1;
     static List<Vector3> spawnPoints;
-    static void SpawnObject()
+    static void SpawnObject(string desk)
     {
-        float x = GameObject.Find("Cube").transform.position.x;
-        float y = GameObject.Find("Cube").transform.position.y;
-        float z = GameObject.Find("Cube").transform.position.z;
+        float x = GameObject.Find(desk).transform.position.x;
+        float y = GameObject.Find(desk).transform.position.y;
+        float z = GameObject.Find(desk).transform.position.z;
 
 
         spawnPoints = new List<Vector3> {
