@@ -8,6 +8,9 @@ public class Player2Movement : MonoBehaviour
     private Rigidbody _rb;
     private float _xDisplacement;
     private float _yDisplacement;
+
+    [SerializeField] private int _speed = 0;
+
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
@@ -20,6 +23,7 @@ public class Player2Movement : MonoBehaviour
 
     void FixedUpdate()
     {
-        _rb.MovePosition(transform.position + new Vector3(_xDisplacement, 0, _yDisplacement));
+        _rb.MovePosition(transform.position + new Vector3(_xDisplacement * _speed * Time.deltaTime, 0,
+            _yDisplacement * _speed * Time.deltaTime));
     }
 }
