@@ -38,7 +38,8 @@
   <ItemGroup>
      <Compile Include="Assets/Scripts/Player/Player2Movement.cs" />
      <Compile Include="Assets/Scripts/GameData.cs" />
-     <Compile Include="Assets/Scripts/Player/Player1Movement.cs" />
+     <Compile Include="Assets/Scripts/Player/Player.cs" />
+     <Compile Include="Assets/Scripts/Player/PlayerMovement.cs" />
     <Reference Include="UnityEngine">
         <HintPath>/Applications/Unity/Hub/Editor/2021.3.12f1/Unity.app/Contents/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
