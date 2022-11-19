@@ -6,23 +6,16 @@ using System;
 public class Spawning : MonoBehaviour
 {
     // Start is called before the first frame update
-    public GameObject garbage;
-    public float radius = 1;
-    List<Vector3> spawnPoints;
-    // Update is called once per frame
-    void Update()
+    static public GameObject garbage;
+    static public float radius = 1;
+    static List<Vector3> spawnPoints;
+    static void SpawnObject()
     {
-       // if(Input.GetKeyDown(KeyCode.Space)) SpawnObject();
-    }
+        float x = GameObject.Find("Cube").transform.position.x;
+        float y = GameObject.Find("Cube").transform.position.y;
+        float z = GameObject.Find("Cube").transform.position.z;
 
-    void SpawnObject(string desk)
-    {
-        //zmienic cube na desk
-        float x = GameObject.Find(desk).transform.position.x;
-        float y = GameObject.Find(desk).transform.position.y;
-        float z = GameObject.Find(desk).transform.position.z;
 
-        //zmienic punnkty na takie jakie nam pasuja przy biurku
         spawnPoints = new List<Vector3> {
                 new Vector3(x+1,y,z),
                 new Vector3(x,y+1,z),
