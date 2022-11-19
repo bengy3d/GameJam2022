@@ -8,24 +8,30 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     private Player p1;
           
-    private GameObject[] spawnPoints;
+    private GameObject[] playerSpawnPoints;
 
     private Transform playerSpawn;
 
+    private GameObject[] garbageSpawnPoints;
+
     void Start()
     {   
-        spawnPoints = GameObject.FindGameObjectsWithTag("PlayerSpawnPosition");
+        playerSpawnPoints = GameObject.FindGameObjectsWithTag("PlayerSpawnPosition");
         
-        if(spawnPoints.Length > 0){
+        if(playerSpawnPoints.Length > 0){
             System.Random rand = new System.Random();
 
-            int spawnIndex = rand.Next(0, spawnPoints.Length);
+            int spawnIndex = rand.Next(playerSpawnPoints.Length);
 
-            playerSpawn = spawnPoints[spawnIndex].transform;
+            playerSpawn = playerSpawnPoints[spawnIndex].transform;
 
             Instantiate(playerPrefab, playerSpawn.position, Quaternion.identity);
         }
+    
+        garbageSpawnPoints = GameObject.FindGameObjectsWithTag("Garbage");
     }
+
+
 
 
 }

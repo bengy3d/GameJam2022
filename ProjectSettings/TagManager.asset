@@ -6,6 +6,7 @@ TagManager:
   tags:
   - PlayerSpawnPosition
   - GarbageSpawnPosition
+  - Garbage
   layers:
   - Default
   - TransparentFX
