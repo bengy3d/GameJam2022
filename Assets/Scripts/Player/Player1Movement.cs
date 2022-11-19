@@ -38,7 +38,7 @@ public class Player1Movement : MonoBehaviour
                 return;
             }
 
-            if (Input.GetButtonDown(GameData.PICKUPP1))
+            if (Input.GetButton(GameData.PICKUPP1))
             {
                 Destroy(other.gameObject);
                 _thrash = true;
@@ -47,10 +47,9 @@ public class Player1Movement : MonoBehaviour
 
         if (other.gameObject.CompareTag("Garbage"))
         {
-            if (Input.GetButtonDown(GameData.PICKUPP1))
+            if (Input.GetButton(GameData.PICKUPP1))
             {
                 _thrash = false;
-                print(_thrash);
             }
         }
 
