@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - PlayerSpawnPosition
+  - GarbageSpawnPosition
   layers:
   - Default
   - TransparentFX
