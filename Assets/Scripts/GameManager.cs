@@ -9,6 +9,9 @@ public class GameManager : MonoBehaviour
     [Header("Player Settings")]
     [SerializeField] private GameObject player1Prefab;
     [SerializeField] private GameObject player2Prefab;
+    [SerializeField] private TextMeshProUGUI player1ScoreText;
+    [SerializeField] private TextMeshProUGUI player2ScoreText;
+    
     [Header("Garbage Setting")]
     [SerializeField] private GameObject grabagePrefab;
     public int numberOfGarbage = 4;
@@ -23,6 +26,8 @@ public class GameManager : MonoBehaviour
     private float time;
     private Transform player1Spawn;
     private Transform player2Spawn;
+    private int player1Score;
+    private int player2Score;
 
     private void Update()
     {
@@ -35,6 +40,9 @@ public class GameManager : MonoBehaviour
 
     void Start(){
         time = startGameTime;
+        player1ScoreText.text = player1Score.ToString();
+        player2ScoreText.text = player2Score.ToString();
+
     }
     
     void FixedUpdate(){
