@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6078590238533834349}
   m_Layer: 0
-  m_Name: SpawnPosition
-  m_TagString: SpawnPosition
+  m_Name: PlayerSpawnPosition
+  m_TagString: PlayerSpawnPosition
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

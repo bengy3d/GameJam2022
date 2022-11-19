@@ -20,11 +20,11 @@ public class GameManager : MonoBehaviour
     }
     // Update is called once per frame
     private void SpawnPlayers() {
-        spawnPoints = GameObject.FindGameObjectsWithTag("SpawnPosition");
+        spawnPoints = GameObject.FindGameObjectsWithTag("PlayerSpawnPosition");
         System.Random rnd = new System.Random();
         
        
-        if(spawnPoints.Length > 2) {
+        if(spawnPoints.Length >= 2) {
             int firstSpawnIndex = 0;
             int secondSpawnIndex = 0;
 
