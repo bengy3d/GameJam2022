@@ -9,8 +9,9 @@ public class Player1Movement : MonoBehaviour
     private Rigidbody _rb;
     private float _xDisplacement;
     private float _yDisplacement;
+    private bool _thrash = false;
 
-    [SerializeField] private int _speed = 0;
+    [SerializeField] private int _speed = 5;
     void Start(){
         _rb = GetComponent<Rigidbody>();
     }
@@ -20,8 +21,38 @@ public class Player1Movement : MonoBehaviour
         _yDisplacement = Input.GetAxis(GameData.VERTICALP1);
     }
 
-    void FixedUpdate(){
+    void FixedUpdate()
+    {
         _rb.MovePosition(transform.position + new Vector3(_xDisplacement * _speed * Time.deltaTime, 0,
             _yDisplacement * _speed * Time.deltaTime));
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+
+
+        if (other.gameObject.CompareTag("Thrash"))
+        {
+            if (_thrash == true)
+            {
+                return;
+            }
+
+            if (Input.GetButtonDown(GameData.PICKUPP1))
+            {
+                Destroy(other.gameObject);
+                _thrash = true;
+            }
+        }
+
+        if (other.gameObject.CompareTag("Garbage"))
+        {
+            if (Input.GetButtonDown(GameData.PICKUPP1))
+            {
+                _thrash = false;
+                print(_thrash);
+            }
+        }
+
     }
 }
