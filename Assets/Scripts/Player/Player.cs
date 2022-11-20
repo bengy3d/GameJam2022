@@ -10,16 +10,19 @@ public class Player: MonoBehaviour {
     private Rigidbody _rb;
     private float x;
     private float z;
+
+    private int score;
     private int pickGarbage;
     private GarbageSpawner garbageSpawner;
 
     private bool hasGarbage = false;
 
-    private string garbage;
+    private GarbageUI garbage;
 
 
     void Start(){
         _rb = GetComponent<Rigidbody>();
+        score = 0;
     }
 
     void Update()
@@ -57,7 +60,26 @@ public class Player: MonoBehaviour {
             garbageSpawner.SpawnGarbage();
             pickGarbage = 0;
 
+            garbage = new GarbageUI("Puszka", "Metal");
             hasGarbage = true;
+            
+        }
+
+        if(hasGarbage && pickGarbage > 0 && colider.bins.Count > 0) {
+            float minDistance = Vector3.Distance(colider.bins[0].transform.position, transform.position);
+            int minIndex = 0;
+            for(int i = 0; i < colider.bins.Count; i++ ){
+                if(Vector3.Distance(colider.bins[i].transform.position, transform.position) < minDistance){
+                    minIndex = i;
+                    minDistance = Vector3.Distance(colider.bins[i].transform.position, transform.position);
+                }
+            }
+            //print(colider.bins[minIndex].GetComponentInChildren<Rigidbody>().name); 
+            if (colider.bins[minIndex].GetComponentInChildren<Rigidbody>().name == garbage.type) {
+                ++score;
+            }
+            print(score);
+            hasGarbage = false;
             
         }
     }
@@ -65,6 +87,10 @@ public class Player: MonoBehaviour {
 }
 
 public class GarbageUI{
-    public string Name;
+    public string name;
     public string type;
+    public GarbageUI(string _name, string _type) {
+        name = _name;
+        type = _type;
+    }
 }

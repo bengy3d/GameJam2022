@@ -13,13 +13,19 @@ public class TrigerBoxController : MonoBehaviour
             trashes.Add(other.gameObject);
         }
       
-
+        if (other.gameObject.CompareTag("Bin")) {
+            bins.Add(other.gameObject);
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
         if(other.gameObject.CompareTag("Garbage")){
             trashes.Remove(other.gameObject);
+        }
+
+        if (other.gameObject.CompareTag("Bin")) {
+            bins.Remove(other.gameObject);
         }
     }
 
