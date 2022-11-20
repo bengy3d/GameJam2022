@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Unity.VectorGraphics;
 using TMPro;
-
+using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {   
     
@@ -109,7 +109,9 @@ public class GameManager : MonoBehaviour
     }
 
     void GameOver(){
-
+        if(SceneManager.sceneCountInBuildSettings > SceneManager.GetActiveScene().buildIndex+1){
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
+        } else SceneManager.LoadScene(0);
     }
 
     void setScore(TextMeshProUGUI playerScoreText, int score, int streak){

@@ -944,6 +944,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player1UI
       objectReference: {fileID: 0}
+    - target: {fileID: 5653352968149655383, guid: 712760c094acd7b41a506020839037db, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5653352968149655383, guid: 712760c094acd7b41a506020839037db, type: 3}
+      propertyPath: m_Color.g
+      value: 0.031513214
+      objectReference: {fileID: 0}
+    - target: {fileID: 5653352968149655383, guid: 712760c094acd7b41a506020839037db, type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 712760c094acd7b41a506020839037db, type: 3}
 --- !u!224 &1124376603 stripped
@@ -1694,6 +1706,10 @@ PrefabInstance:
       propertyPath: player2Prefab
       value: 
       objectReference: {fileID: 2081173854909179080, guid: 9a348c746d287f44c868e701f5eba7a9, type: 3}
+    - target: {fileID: 1770844042438832544, guid: 242a76a172a23604ea0becae736eaa98, type: 3}
+      propertyPath: startGameTime
+      value: 120
+      objectReference: {fileID: 0}
     - target: {fileID: 1770844042438832544, guid: 242a76a172a23604ea0becae736eaa98, type: 3}
       propertyPath: player1ScoreText
       value: 
