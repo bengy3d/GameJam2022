@@ -9,7 +9,7 @@ public class TrigerBoxController : MonoBehaviour
     public List<GameObject> bins = new List<GameObject>();
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.CompareTag("Trash")){
+        if(other.gameObject.CompareTag("Garbage")){
             trashes.Add(other.gameObject);
         }
       
@@ -18,8 +18,12 @@ public class TrigerBoxController : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if(other.gameObject.CompareTag("Trash")){
+        if(other.gameObject.CompareTag("Garbage")){
             trashes.Remove(other.gameObject);
         }
+    }
+
+    public void RemoveTrashOnIndex(int index){
+        trashes.RemoveAt(index);
     }
 }
