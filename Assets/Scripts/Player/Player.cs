@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static JSONReader;
 
 public class Player: MonoBehaviour {
     [SerializeField] private string verticalAxis;
@@ -10,18 +11,18 @@ public class Player: MonoBehaviour {
     [SerializeField] private int _speed = 5;
 
     [SerializeField] private TrigerBoxController colider;
+    [SerializeField] private JSONReader database;
     private Rigidbody _rb;
     private float x;
     private float z;
 
-    private int score;
+    private int score = 0;
     private int pickGarbage;
     private GarbageSpawner garbageSpawner;
 
     private bool hasGarbage = false;
 
     private GarbageUI garbage;
-
 
     void Start(){
         _rb = GetComponent<Rigidbody>();
@@ -63,7 +64,7 @@ public class Player: MonoBehaviour {
             garbageSpawner.SpawnGarbage();
             pickGarbage = 0;
 
-            garbage = new GarbageUI("Puszka", "Metal", "Images/AGROWŁÓKNINA.svg");
+            garbage = database.getRandomGarbage();
             hasGarbage = true;
             
         }
@@ -110,21 +111,10 @@ public class Player: MonoBehaviour {
 
     public string GetGarbageImg(){
         if(garbage == null){
-            return "Images/DEFAULT.svg";
+            return "Sprites/DEFAULT";
         }
         
-        return garbage.imgName; 
+        return "Sprites/"+garbage.imgName; 
     }
 
-}
-
-public class GarbageUI{
-    public string name;
-    public string type;
-    public string imgName;
-    public GarbageUI(string _name, string _type, string _imgName) {
-        name = _name;
-        type = _type;
-        imgName = _imgName;
-    }
 }

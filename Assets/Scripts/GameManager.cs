@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using Unity.VectorGraphics;
 using TMPro;
 
 public class GameManager : MonoBehaviour
@@ -12,14 +14,16 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI player1ScoreText;
     
     [SerializeField] private TextMeshProUGUI player1InventoryText;
-    [SerializeField] private Plane player1InvetoryImg;
+    
+    [SerializeField] private SVGImage player1InvetoryImg;
+
     [Header("Player2 Settings")]
     [SerializeField] private Player player2Prefab;
     
     [SerializeField] private TextMeshProUGUI player2ScoreText;
     
     [SerializeField] private TextMeshProUGUI player2InventoryText;
-    [SerializeField] private Plane player2InvetoryImg;
+    [SerializeField] private SVGImage player2InvetoryImg;
 
     [Header("Garbage Setting")]
     [SerializeField] private GameObject garbagePrefab;
@@ -45,7 +49,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {   
         playerSpawnPoints = GameObject.FindGameObjectsWithTag("PlayerSpawnPosition");
-        
+        print(playerSpawnPoints.Length);
         if(playerSpawnPoints.Length > 1){
             System.Random rand = new System.Random();
             int spawnP1Index;
@@ -60,7 +64,7 @@ public class GameManager : MonoBehaviour
 
             player1Spawn = playerSpawnPoints[spawnP1Index].transform;
             player2Spawn = playerSpawnPoints[spawnP2Index].transform;
-
+            
             p1 = Instantiate(player1Prefab, player1Spawn.position, Quaternion.identity);
             p2 = Instantiate(player2Prefab, player2Spawn.position, Quaternion.identity);
 
@@ -71,19 +75,36 @@ public class GameManager : MonoBehaviour
         garbageSpawner.InitGarabge(numberOfGarbage);
 
         time = startGameTime;
+
+        player1ScoreText.text = p1.GetScore().ToString();
+        player2ScoreText.text = p2.GetScore().ToString();
+        player1InventoryText.text = p1.GetGarbageName();
+        player2InventoryText.text = p2.GetGarbageName();
+        Sprite imgP1 = Resources.Load<Sprite>(p1.GetGarbageImg());
+        player1InvetoryImg.sprite = imgP1;
+        Sprite imgP2 = Resources.Load<Sprite>(p2.GetGarbageImg());
+        player2InvetoryImg.sprite = imgP2;
+        
+    }
+    
+    void FixedUpdate(){
+
         player1ScoreText.text = p1.GetScore().ToString();
         player2ScoreText.text = p2.GetScore().ToString();
         player1InventoryText.text = p1.GetGarbageName();
         player2InventoryText.text = p2.GetGarbageName();
 
-        
-    }
-    
-    void FixedUpdate(){
+        Sprite imgP1 = Resources.Load<Sprite>(p1.GetGarbageImg());
+        player1InvetoryImg.sprite = imgP1;
+        Sprite imgP2 = Resources.Load<Sprite>(p2.GetGarbageImg());
+        player2InvetoryImg.sprite = imgP2;
+
+
         time -= Time.fixedDeltaTime;
         int minuts = (int)(time / 60);
         int secunds = (int)time - minuts * 60;
         timeText.text = minuts + ":" + secunds;
+
     }
 
 

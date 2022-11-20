@@ -8,6 +8,10 @@ TagManager:
   - GarbageSpawnPosition
   - Garbage
   - Bin
+<<<<<<< Updated upstream
+=======
+  - DataBase
+>>>>>>> Stashed changes
   layers:
   - Default
   - TransparentFX
