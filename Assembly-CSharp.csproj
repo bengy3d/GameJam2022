@@ -36,8 +36,8 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets/Scripts/Player/JSONReader.cs" />
      <Compile Include="Assets/Scripts/Player/Player.cs" />
-     <Compile Include="Assets/Scripts/Player/Player2Movement.cs" />
      <Compile Include="Assets/Scripts/GameData.cs" />
      <Compile Include="Assets/Scripts/GarbageSpawner.cs" />
      <Compile Include="Assets/Scripts/Bin.cs" />
