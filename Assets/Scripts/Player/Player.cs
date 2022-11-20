@@ -17,6 +17,7 @@ public class Player: MonoBehaviour {
     private float z;
 
     private int score = 0;
+    private int streak = 0;
     private int pickGarbage;
     private GarbageSpawner garbageSpawner;
 
@@ -78,11 +79,15 @@ public class Player: MonoBehaviour {
                     minDistance = Vector3.Distance(colider.bins[i].transform.position, transform.position);
                 }
             }
-            //print(colider.bins[minIndex].GetComponentInChildren<Rigidbody>().name); 
-            if (colider.bins[minIndex].GetComponentInChildren<Rigidbody>().name == garbage.type) {
-                ++score;
+           
+            if (colider.bins[minIndex].name == garbage.type) {
+                score += 10;
+                streak++;
+            } else{
+                score -= 15;
+                streak = 0;
             }
-            print(score);
+
             hasGarbage = false;
             garbage = null;
             
@@ -115,6 +120,10 @@ public class Player: MonoBehaviour {
         }
         
         return "Sprites/"+garbage.imgName; 
+    }
+
+    public int GetStreak(){
+        return streak;
     }
 
 }

@@ -88,9 +88,10 @@ public class GameManager : MonoBehaviour
     }
     
     void FixedUpdate(){
+        if(time < 0) GameOver(); 
+        setScore(player1ScoreText, p1.GetScore(), p1.GetStreak());
+        setScore(player2ScoreText, p2.GetScore(), p2.GetStreak());
 
-        player1ScoreText.text = p1.GetScore().ToString();
-        player2ScoreText.text = p2.GetScore().ToString();
         player1InventoryText.text = p1.GetGarbageName();
         player2InventoryText.text = p2.GetGarbageName();
 
@@ -104,7 +105,19 @@ public class GameManager : MonoBehaviour
         int minuts = (int)(time / 60);
         int secunds = (int)time - minuts * 60;
         timeText.text = minuts + ":" + secunds;
+        
+    }
 
+    void GameOver(){
+
+    }
+
+    void setScore(TextMeshProUGUI playerScoreText, int score, int streak){
+        if(streak > 6) playerScoreText.color =  new Color(1.0f, 0.1f, 0.1f, 1.0f);
+        else if(streak > 2) playerScoreText.color =  new Color(1.0f, 0.8f, 0f, 1.0f);
+        else playerScoreText.color =  new Color(0f,0f, 0f, 1.0f);
+
+        playerScoreText.text = score.ToString();
     }
 
 

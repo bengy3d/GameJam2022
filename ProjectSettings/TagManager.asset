@@ -4,14 +4,11 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - PlayerSpawnPosition
   - GarbageSpawnPosition
-  - Garbage
+  - PlayerSpawnPosition
   - Bin
-<<<<<<< Updated upstream
-=======
-  - DataBase
->>>>>>> Stashed changes
+  - Garbage
+  - BinTag
   layers:
   - Default
   - TransparentFX
