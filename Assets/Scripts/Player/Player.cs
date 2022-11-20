@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Player: MonoBehaviour {
-    
+    [SerializeField] private string verticalAxis;
+    [SerializeField] private string horizontalAxis;
+    [SerializeField] private string pickGarbageAxis;
+
     [SerializeField] private int _speed = 5;
 
     [SerializeField] private TrigerBoxController colider;
@@ -27,10 +30,10 @@ public class Player: MonoBehaviour {
 
     void Update()
     {
-        x = Input.GetAxis(GameData.HORIZONTALP1);
-        z = Input.GetAxis(GameData.VERTICALP1);
+        x = Input.GetAxis(horizontalAxis);
+        z = Input.GetAxis(verticalAxis);
 
-        pickGarbage = (int) Mathf.Round(Input.GetAxis("PickGarbage"));
+        pickGarbage = (int) Mathf.Round(Input.GetAxis(pickGarbageAxis));
         
     }
 
@@ -60,7 +63,7 @@ public class Player: MonoBehaviour {
             garbageSpawner.SpawnGarbage();
             pickGarbage = 0;
 
-            garbage = new GarbageUI("Puszka", "Metal");
+            garbage = new GarbageUI("Puszka", "Metal", "Images/AGROWŁÓKNINA.svg");
             hasGarbage = true;
             
         }
@@ -80,8 +83,37 @@ public class Player: MonoBehaviour {
             }
             print(score);
             hasGarbage = false;
+            garbage = null;
             
         }
+    }
+
+    public int GetScore(){
+        return score;
+    }
+
+    public string GetGarbageName(){
+        if(garbage == null){
+            return "Brak";
+        }
+        
+        return garbage.name;
+    }
+
+    public string GetGarbageType(){
+        if(garbage == null){
+            return null;
+        }
+        
+        return garbage.type;
+    }
+
+    public string GetGarbageImg(){
+        if(garbage == null){
+            return "Images/DEFAULT.svg";
+        }
+        
+        return garbage.imgName; 
     }
 
 }
@@ -89,8 +121,10 @@ public class Player: MonoBehaviour {
 public class GarbageUI{
     public string name;
     public string type;
-    public GarbageUI(string _name, string _type) {
+    public string imgName;
+    public GarbageUI(string _name, string _type, string _imgName) {
         name = _name;
         type = _type;
+        imgName = _imgName;
     }
 }
