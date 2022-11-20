@@ -25,9 +25,12 @@ public class Player: MonoBehaviour {
 
     private GarbageUI garbage;
 
+    private string rightAnswer;
+
     void Start(){
         _rb = GetComponent<Rigidbody>();
         score = 0;
+        rightAnswer = null;
     }
 
     void Update()
@@ -83,9 +86,11 @@ public class Player: MonoBehaviour {
             if (colider.bins[minIndex].name == garbage.type) {
                 score += 10;
                 streak++;
+                rightAnswer = "Poprawna odpowiedź";
             } else{
                 score -= 15;
                 streak = 0;
+                rightAnswer = "Zła odpowiedź! Poprawna: " + garbage.type;
             }
 
             hasGarbage = false;
@@ -96,6 +101,14 @@ public class Player: MonoBehaviour {
 
     public int GetScore(){
         return score;
+    }
+
+    public string GetRightAnswer() {
+        return rightAnswer;
+    }
+
+    public void SetNullRightAnswer() {
+        rightAnswer = null;
     }
 
     public string GetGarbageName(){

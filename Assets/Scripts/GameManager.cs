@@ -32,6 +32,8 @@ public class GameManager : MonoBehaviour
     [Header("Time Setting")]
     [SerializeField] private int startGameTime = 120;
     [SerializeField] private TextMeshProUGUI timeText;
+    [SerializeField] private TextMeshProUGUI rightAnswer1;
+    [SerializeField] private TextMeshProUGUI rightAnswer2;
     private Player p1;
     private Player p2;
     private GameObject[] playerSpawnPoints;
@@ -100,6 +102,13 @@ public class GameManager : MonoBehaviour
         Sprite imgP2 = Resources.Load<Sprite>(p2.GetGarbageImg());
         player2InvetoryImg.sprite = imgP2;
 
+        if (p1.GetRightAnswer() != null) {
+            rightAnswer1.text = p1.GetRightAnswer();
+        }
+
+        if (p2.GetRightAnswer() != null) {
+            rightAnswer2.text = p2.GetRightAnswer();
+        }
 
         time -= Time.fixedDeltaTime;
         int minuts = (int)(time / 60);
